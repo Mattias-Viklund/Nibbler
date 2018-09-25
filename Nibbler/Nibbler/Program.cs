@@ -38,24 +38,36 @@ namespace Nibbler
 
         };
 
-        public byte GetNibble(byte nibble)
+        public byte GetNibble(byte nibble, bool withPosition = false)
         {
-            if (nibble > 15)
-                throw new Exception("You've overstepped. No christmas for you.");
-
             int nibb = nibble & 0b00001111;
 
-            if (nibb == 0)
-                return (byte)(nibbles[0] >> 4);
-            if (nibb == 1)
-                return (byte)(nibbles[0] & 0b00001111);
-
-            if (nibb > 0b00001111)
-                return (byte)(nibbles[nibb / 2] >> 4);
+            if (nibb % 2 == 0)
+            {
+                if (withPosition)
+                    return (byte)((nibbles[nibb / 2] >> 4) | (nibb << 4));
+                else
+                    return (byte)(nibbles[nibb / 2] >> 4);
+            }
             else
-                return (byte)(nibbles[nibb / 2] & 0b00001111);
+            {
+                if (withPosition)
+                    return (byte)((nibbles[nibb / 2] & 0b00001111) | (nibb << 4));
+                else
+                    return (byte)(nibbles[nibb / 2] & 0b00001111);
 
-            throw new Exception("Rawr, I goofed it.");
+            }
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="nibble"></param>
+        /// <returns></returns>
+        public byte SetNibble(byte nibble)
+        {
+            byte data = GetNibble((byte)(nibble & 0b11110000));
+
 
         }
     }
