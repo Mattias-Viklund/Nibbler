@@ -21,7 +21,7 @@ namespace Nibbler
 
             }
 
-            for (byte b = 0; b < Nibble.MaxValue; b++)
+            for (byte b = 0; b < Nibble.MaxValue+1; b++)
             {
                 Console.WriteLine(b+": "+(int)mem.GetNibblePair(b));
 
@@ -87,15 +87,19 @@ namespace Nibbler
         /// <returns></returns>
         public void SetNibble(byte nibble)
         {
-            byte pos = (byte)(nibble & 0b0111_0000);
-            bool second = false;
+            byte pos = (byte)((nibble & 0b1111_0000) >> 4);
+            
+            if (IsEven(pos))
+            {
+                pos = (byte)(pos / 2 - 1);
 
-            if (((byte)(nibble & 0b1000_0000) == 0b1000_0000))
-                second = true;
+            } else
+            {
+                pos = (byte)(pos / 2);
 
-            byte data = GetNibble((byte)(pos >> 4));
+            }
 
-
+            byte data = GetNibble(pos);
             byte nibb = (byte)(nibble & 0b00001111);
 
             if (nibb % 2 == 0)
@@ -107,12 +111,8 @@ namespace Nibbler
 
         public byte GetNibblePair(byte nibble)
         {
-            byte nibb = (byte)(nibble & 0b00001111);
-            byte nibb3 = (byte)(nibb / 2);
-
-            if (!IsEven(nibb))
-                nibb3 = (byte)((nibb / 2) + 1);
-            return nibbles[nibb3];
+            byte b = (byte)((nibble & 0b00001111) >> 1);
+            return nibbles[b];
 
         }
     }
