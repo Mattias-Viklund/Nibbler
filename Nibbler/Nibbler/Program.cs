@@ -21,7 +21,7 @@ namespace Nibbler
 
             }
 
-            for (byte b = 0; b < Nibble.MaxValue / 2; b++)
+            for (byte b = 0; b < Nibble.MaxValue; b++)
             {
                 Console.WriteLine(b+": "+(int)mem.GetNibblePair(b));
 
@@ -37,7 +37,7 @@ namespace Nibbler
 
     class Memory
     {
-        private byte[] nibbles = {
+        public byte[] nibbles = {
             0b0000_0001, // 0_1
             0b0010_0011, // 2_3
             0b0100_0101, // 4_5

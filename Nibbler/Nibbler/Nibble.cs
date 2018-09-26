@@ -2,7 +2,7 @@
 {
     class Nibble
     {
-        public const byte MaxValue = 16;
+        public const byte MaxValue = 15;
         public const byte MinValue = 0;
 
         public byte MergeByteNibble(byte byt, byte nibble, bool first, bool nibbleFirst)
