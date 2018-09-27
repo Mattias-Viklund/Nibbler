@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 
 namespace NibblerProgrammer.Compilation.Register
 {
+    /// <summary>
+    /// BASE POINTER REGISTER
+    /// </summary>
     class BP
     {
     }

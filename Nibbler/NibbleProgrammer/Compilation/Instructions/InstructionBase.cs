@@ -7,6 +7,9 @@ using System.Threading.Tasks;
 
 namespace NibblerProgrammer.Compilation.Instructions
 {
+    /// <summary>
+    /// Base class for 8 bit instructions
+    /// </summary>
     abstract class InstructionBase
     {
         public static List<InstructionBase> instructions = new List<InstructionBase>();

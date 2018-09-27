@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace NibblerProgrammer.Compilation.Register
 {
-    class RegisterBase
+    abstract class RegisterBase
     {
-
-
+        public abstract string RegisterName();
+        public abstract byte RegisterAsNibble();
     }
 }
