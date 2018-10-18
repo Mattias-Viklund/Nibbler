@@ -1,4 +1,5 @@
 ﻿using NibblerProgrammer.Compilation.Instructions;
+using NibblerProgrammer.Compilation.Register;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,6 +13,7 @@ namespace NibblerProgrammer.Compilation
         public Parser()
         {
             InstructionBase.InitializeList();
+            RegisterBase.InitializeList();
 
         }
 
@@ -34,8 +36,15 @@ namespace NibblerProgrammer.Compilation
                 foreach (InstructionBase instruction in InstructionBase.instructions)
                 {
                     if (instruction.GetKey() == words[0])
-                        nibblerLines[currentLine] = instruction.Parse(words);
+                    {
+                        string parsedLine = instruction.Parse(words);
 
+                        if (parsedLine != null)
+                            nibblerLines[currentLine] = instruction.Parse(words);
+                        else
+                            nibblerLines[currentLine] = InstructionBase.instructions[0].Parse(new string[] { "" });
+
+                    }
                 }
                 currentLine++;
 

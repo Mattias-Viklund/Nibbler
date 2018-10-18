@@ -1,4 +1,5 @@
-﻿using System;
+﻿using NibblerProgrammer.Compilation.Register;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -31,7 +32,33 @@ namespace NibblerProgrammer.Compilation.Instructions
             if (args.Length != arguments)
                 return null;
 
-            return "MOV REG REG";
+            string message = "MOV ";
+
+            bool regA = false;
+            bool regB = false;
+
+            for (int i = 1; i < 3; i++)
+            {
+                RegisterBase rb = RegisterBase.TryFindRegister(args[1]);
+                if (rb != null)
+                {
+                    message += rb.RegisterName() + " ";
+
+                    if (i == 1)
+                        regA = true;
+                    else
+                        regB = true;
+
+                }
+            }
+
+            if (regA == false)
+            {
+
+            }
+
+
+            return message;
 
         }
     }

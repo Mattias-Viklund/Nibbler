@@ -49,11 +49,13 @@
     <Compile Include="Compilation\Instructions\MOV.cs" />
     <Compile Include="Compilation\Instructions\NOP.cs" />
     <Compile Include="Compilation\Parser.cs" />
-    <Compile Include="Compilation\Register\A.cs" />
-    <Compile Include="Compilation\Register\BP.cs" />
-    <Compile Include="Compilation\Register\E.cs" />
+    <Compile Include="Compilation\Register\Registers\A.cs" />
+    <Compile Include="Compilation\Register\Registers\BP.cs" />
+    <Compile Include="Compilation\Register\Registers\C.cs" />
+    <Compile Include="Compilation\Register\Registers\E.cs" />
+    <Compile Include="Compilation\Register\Registers\NoRegister.cs" />
     <Compile Include="Compilation\Register\RegisterBase.cs" />
-    <Compile Include="Compilation\Register\SP.cs" />
+    <Compile Include="Compilation\Register\Registers\SP.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>

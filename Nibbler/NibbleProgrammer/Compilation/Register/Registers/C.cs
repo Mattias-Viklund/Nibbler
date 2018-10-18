@@ -4,18 +4,19 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace NibblerProgrammer.Compilation.Register
+namespace NibblerProgrammer.Compilation.Register.Registers
 {
-    class A : RegisterBase
+    class C : RegisterBase
     {
         public override byte RegisterAsNibble()
         {
-            return 0b0000_1001;
+            return 0b0000_1011;
         }
 
         public override string RegisterName()
         {
-            throw new NotImplementedException();
+            return "C";
+
         }
     }
 }
