@@ -27,9 +27,10 @@ namespace NibblerProgrammer.Compilation.Instructions
             return "NOP";
         }
 
-        public override string GetName()
+        public override byte GetOpCode()
         {
-            return "NOP";
+            return 0b0000_0000;
+
         }
 
         public override string Parse(string[] args)

@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace NibblerProgrammer.Compilation.Instructions
 {
-    class MOV : InstructionBase
+    class ADD : InstructionBase
     {
         private int arguments = 3;
 
@@ -19,12 +19,13 @@ namespace NibblerProgrammer.Compilation.Instructions
 
         public override string GetKey()
         {
-            return "MOV";
+            return "ADD";
+
         }
 
         public override byte GetOpCode()
         {
-            return 0b0000_1010;
+            return 0b0000_1000;
 
         }
 
@@ -33,7 +34,7 @@ namespace NibblerProgrammer.Compilation.Instructions
             if (args.Length != arguments)
                 return null;
 
-            string message = "MOV ";
+            string message = "ADD ";
 
             bool regA = false;
             bool regB = false;
@@ -69,7 +70,7 @@ namespace NibblerProgrammer.Compilation.Instructions
 
                 }
 
-                return "No register to move to";
+                return "Can not add number with number";
 
             }
             else
@@ -91,7 +92,7 @@ namespace NibblerProgrammer.Compilation.Instructions
                     if (!regB)
                         message += b + " ";
                     else
-                        return "Can't move register into number";
+                        return "Can't add number from register";
                 }
 
                 if (regB == false)

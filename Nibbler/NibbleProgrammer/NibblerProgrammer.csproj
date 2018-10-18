@@ -45,9 +45,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Compilation\BinaryParser.cs" />
+    <Compile Include="Compilation\Instructions\ADD.cs" />
     <Compile Include="Compilation\Instructions\InstructionBase.cs" />
     <Compile Include="Compilation\Instructions\MOV.cs" />
     <Compile Include="Compilation\Instructions\NOP.cs" />
+    <Compile Include="Compilation\Instructions\SUB.cs" />
     <Compile Include="Compilation\Parser.cs" />
     <Compile Include="Compilation\Register\Registers\A.cs" />
     <Compile Include="Compilation\Register\Registers\BP.cs" />

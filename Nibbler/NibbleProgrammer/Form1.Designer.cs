@@ -37,18 +37,21 @@
             // 
             // codeText
             // 
-            this.codeText.Location = new System.Drawing.Point(12, 12);
+            this.codeText.Location = new System.Drawing.Point(9, 10);
+            this.codeText.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.codeText.Name = "codeText";
-            this.codeText.Size = new System.Drawing.Size(588, 517);
+            this.codeText.Size = new System.Drawing.Size(442, 421);
             this.codeText.TabIndex = 0;
             this.codeText.Text = "";
             this.codeText.TextChanged += new System.EventHandler(this.Typing);
             // 
             // outText
             // 
-            this.outText.Location = new System.Drawing.Point(606, 12);
+            this.outText.Location = new System.Drawing.Point(454, 10);
+            this.outText.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.outText.Name = "outText";
-            this.outText.Size = new System.Drawing.Size(222, 517);
+            this.outText.ReadOnly = true;
+            this.outText.Size = new System.Drawing.Size(168, 421);
             this.outText.TabIndex = 1;
             this.outText.Text = "";
             // 
@@ -59,20 +62,23 @@
             // 
             // richTextBox1
             // 
-            this.richTextBox1.Location = new System.Drawing.Point(834, 12);
+            this.richTextBox1.Location = new System.Drawing.Point(626, 10);
+            this.richTextBox1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.richTextBox1.Name = "richTextBox1";
-            this.richTextBox1.Size = new System.Drawing.Size(173, 517);
+            this.richTextBox1.ReadOnly = true;
+            this.richTextBox1.Size = new System.Drawing.Size(131, 421);
             this.richTextBox1.TabIndex = 2;
             this.richTextBox1.Text = "";
             // 
             // Form1
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1019, 541);
+            this.ClientSize = new System.Drawing.Size(764, 440);
             this.Controls.Add(this.richTextBox1);
             this.Controls.Add(this.outText);
             this.Controls.Add(this.codeText);
+            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Name = "Form1";
             this.Text = "PP";
             this.Load += new System.EventHandler(this.Form1_Load);

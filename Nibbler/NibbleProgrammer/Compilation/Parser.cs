@@ -49,7 +49,17 @@ namespace NibblerProgrammer.Compilation
                 currentLine++;
 
             }
-            return nibblerLines;
+
+            List<string> nibblerOut = new List<string>();
+            
+            foreach (string s in nibblerLines)
+            {
+                if (s != "NOP")
+                    nibblerOut.Add(s);
+
+            }
+
+            return nibblerOut.ToArray();
 
         }
     }

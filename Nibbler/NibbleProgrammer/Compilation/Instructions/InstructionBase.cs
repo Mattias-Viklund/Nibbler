@@ -52,7 +52,7 @@ namespace NibblerProgrammer.Compilation.Instructions
 
         }
 
-        public abstract string GetName();
+        public abstract byte GetOpCode();
         public abstract string GetKey();
         public abstract int ExpectedArguments();
         public abstract string Parse(string[] args);

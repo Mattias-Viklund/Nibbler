@@ -5,7 +5,7 @@
         public const byte MaxValue = 0xF;
         public const byte MinValue = 0;
 
-        public byte MergeByteNibble(byte byt, byte nibble, bool first, bool nibbleFirst)
+        public static byte MergeByteNibble(byte byt, byte nibble, bool first, bool nibbleFirst)
         {
             byte nibb = (byte)(nibble & 0b00001111);
 
@@ -45,7 +45,7 @@
             }
         }
 
-        public byte ByteToNibble(byte b, bool first)
+        public static byte ByteToNibble(byte b, bool first)
         {
             if (first)
             {
