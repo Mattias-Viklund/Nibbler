@@ -39,7 +39,7 @@ namespace NibblerProgrammer.Compilation.Instructions
 
             for (int i = 1; i < 3; i++)
             {
-                RegisterBase rb = RegisterBase.TryFindRegister(args[1]);
+                RegisterBase rb = RegisterBase.TryFindRegister(args[i]);
                 if (rb != null)
                 {
                     message += rb.RegisterName() + " ";
@@ -54,6 +54,37 @@ namespace NibblerProgrammer.Compilation.Instructions
 
             if (regA == false)
             {
+                int b = 0;
+               try
+                {
+                    b = Convert.ToInt32(args[1]);
+
+                }
+                catch
+                {
+                    return "Arg 1 incorrect";
+
+                }
+
+                message += b + " ";
+
+            }
+
+            if (regB == false)
+            {
+                int i = 0;
+                try
+                {
+                    i = Convert.ToInt32(args[1]);
+
+                }
+                catch
+                {
+                    return "Arg 2 incorrect";
+
+                }
+
+                message += i + "";
 
             }
 
