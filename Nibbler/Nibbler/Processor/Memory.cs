@@ -4,11 +4,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace NibblerProgrammer.Compilation
+namespace Nibbler.Processor
 {
-    class BinaryParser
+    class Memory
     {
 
+        public Memory(byte width)
+        {
 
+        }
     }
 }

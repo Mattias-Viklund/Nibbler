@@ -43,10 +43,15 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Memory.cs" />
-    <Compile Include="Nibble.cs" />
+    <Compile Include="Core\DualNibble.cs" />
+    <Compile Include="Core\Nibble.cs" />
+    <Compile Include="Core\QuadNibble.cs" />
+    <Compile Include="Processor\Bus.cs" />
+    <Compile Include="Processor\CPU.cs" />
+    <Compile Include="Processor\Memory.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Util\Maths.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
