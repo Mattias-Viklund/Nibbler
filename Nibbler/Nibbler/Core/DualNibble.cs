@@ -69,7 +69,5 @@ namespace Nibbler.Core
             return (byte)(tempA | right);
 
         }
-
-        public static 
     }
 }
