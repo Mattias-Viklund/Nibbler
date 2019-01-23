@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace Nibbler.Motherboard
@@ -15,7 +16,7 @@ namespace Nibbler.Motherboard
         private Bus bus;
         private Memory memory;
 
-        public Mainboard(CPU cpu, byte memory)
+        public Mainboard(CPU cpu)
         {
             this.cpu = cpu;
             this.bus = new Bus();
@@ -26,15 +27,16 @@ namespace Nibbler.Motherboard
         public void Cycle()
         {
             cpu.Think(this);
+            Thread.Sleep(50);
 
-            foreach (Component c in components)
-            {
-                if (bus.Read(c.GetComponentID()))
-                {
-                    c.RecieveData(bus.Read());
+            //foreach (Component c in components)
+            //{
+            //    if (bus.Read(c.GetComponentID()))
+            //    {
+            //        c.RecieveData(bus.Read());
 
-                }
-            }
+            //    }
+            //}
         }
 
         public Memory GetRAM()

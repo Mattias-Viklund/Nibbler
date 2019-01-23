@@ -22,21 +22,49 @@ namespace Nibbler.Processor
 
         public void Think(Mainboard mainboard)
         {
-            ReadInstruction(mainboard.GetRAM());
+            Console.WriteLine("Program Counter: " + GetPC());
+            //ReadInstruction(mainboard.GetRAM());
+            IncrementPC();
+
+        }
+
+        public int GetPC()
+        {
+            int PC = programCounter[0];
+
+            for (int i = 1; i < memoryWidth; i++)
+            {
+                PC = PC << 8;
+                PC = PC | programCounter[i];
+
+            }
+
+            return PC;
 
         }
 
         public void IncrementPC()
         {
-            if (programCounter[memoryWidth-1] == 0xFF)
+            bool carry = false;
+            for (int i = memoryWidth - 1; i >= 0; i--)
             {
+                byte b = programCounter[i];
+                b++;
+
+                if (carry)
+                    b++;
+
+                if (b == 0x00)
+                    carry = true;
+
+                programCounter[i] = b;
 
             }
         }
 
-        public void ReadInstruction(Memory memory)
+        public byte ReadInstruction(Memory memory)
         {
-            memory.ReadData(programCounter);
+            return memory.ReadData(programCounter);
 
         }
 

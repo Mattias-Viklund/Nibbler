@@ -44,7 +44,7 @@ namespace Nibbler.Processor
         {
             for (byte b = 0; b < size + 1; b++)
             {
-                if (b == size)
+                if (b == size)  
                 {
                     int memoryLocation = location[0];
 

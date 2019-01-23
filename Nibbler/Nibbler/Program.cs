@@ -8,18 +8,24 @@ using System.Threading;
 
 using Nibbler.Core;
 using Nibbler.Util;
+using Nibbler.Motherboard;
+using Nibbler.Processor;
 
 namespace Nibbler
 {
     class Program
     {
+        static Mainboard motherboard = new Mainboard(new CPU(0x02));
+        static bool running = true;
+
         static void Main(string[] args)
         {
-            byte a = 0xF1;
-            byte b = 0xF3;
+            while (running)
+            {
+                motherboard.Cycle();
 
-            Console.WriteLine((int)Nibble.AddNibble(a, b));
-            Console.ReadLine();
+            }
+
 
         }
     }
