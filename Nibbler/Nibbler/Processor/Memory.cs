@@ -25,6 +25,21 @@ namespace Nibbler.Processor
 
         }
 
+        public byte ReadData(byte[] location)
+        {
+            int memoryLocation = location[0];
+
+            for (int i = 1; i < size; i++)
+            {
+                memoryLocation = memoryLocation << 8;
+                memoryLocation = memoryLocation | location[i];
+
+            }
+
+            return data[memoryLocation];
+
+        }
+
         public override void RecieveData(byte data)
         {
             for (byte b = 0; b < size + 1; b++)

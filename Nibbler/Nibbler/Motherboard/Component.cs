@@ -12,14 +12,17 @@ namespace Nibbler.Motherboard
         private byte component;
 
         // Is the component connected to the bus? What's it's id?
-        public Component(bool onBus, byte component)
+        public Component(bool onBus, byte component, bool macro = true)
         {
             this.onBus = onBus;
             this.component = component;
 
+            if (macro)
+                Mainboard.components.Add(this);
+
         }
 
-        public byte GetComponent()
+        public byte GetComponentID()
         {
             return this.component;
 

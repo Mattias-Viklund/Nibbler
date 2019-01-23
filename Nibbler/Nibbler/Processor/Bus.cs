@@ -14,20 +14,23 @@ namespace Nibbler.Processor
         private bool waiting = false;
 
         // component = X | Recipient
-        public byte Read(byte component)
+        public bool Read(byte component)
         {
             if (Nibble.ToNibble(reciever, false) == component)
-            {
-                waiting = false;
+                return true;
 
-                byte temp = busData;
-                busData = 0x00;
+            return false;
 
-                return temp;
+        }
 
-            }
+        public byte Read()
+        {
+            waiting = false;
 
-            return 0x00;
+            byte temp = busData;
+            busData = 0x00;
+
+            return temp;
 
         }
 

@@ -46,6 +46,8 @@
     <Compile Include="Core\DualNibble.cs" />
     <Compile Include="Core\Nibble.cs" />
     <Compile Include="Core\QuadNibble.cs" />
+    <Compile Include="Motherboard\Component.cs" />
+    <Compile Include="Motherboard\Mainboard.cs" />
     <Compile Include="Processor\Bus.cs" />
     <Compile Include="Processor\CPU.cs" />
     <Compile Include="Processor\Memory.cs" />

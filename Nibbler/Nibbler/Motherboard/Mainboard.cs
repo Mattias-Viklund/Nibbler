@@ -9,6 +9,8 @@ namespace Nibbler.Motherboard
 {
     class Mainboard
     {
+        public static List<Component> components = new List<Component>();
+
         private CPU cpu;
         private Bus bus;
         private Memory memory;
@@ -16,6 +18,8 @@ namespace Nibbler.Motherboard
         public Mainboard(CPU cpu, byte memory)
         {
             this.cpu = cpu;
+            this.bus = new Bus();
+            this.memory = new Memory(cpu.GetMemoryWidth());
 
         }
 
@@ -23,11 +27,19 @@ namespace Nibbler.Motherboard
         {
             cpu.Think(this);
 
+            foreach (Component c in components)
+            {
+                if (bus.Read(c.GetComponentID()))
+                {
+                    c.RecieveData(bus.Read());
+
+                }
+            }
         }
 
-        public byte GetRAM()
+        public Memory GetRAM()
         {
-            return memory.GetComponent();
+            return memory;
 
         }
 
