@@ -4,12 +4,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Nibbler.Motherboard;
+using Nibbler.Util;
 
 namespace Nibbler.Processor
 {
     class Memory : Component
     {
-        private bool waiting = false;
         private byte size;
 
         private int iteration = 0;
@@ -21,53 +21,33 @@ namespace Nibbler.Processor
         {
             this.size = size;
             this.location = new byte[size];
-            this.data = new byte[(int)Math.Pow(size, size)];
+            this.data = new byte[(int)Math.Pow(2, 8 * size)];
 
         }
 
         public byte ReadData(byte[] location)
         {
-            int memoryLocation = location[0];
-
-            for (int i = 1; i < size; i++)
-            {
-                memoryLocation = memoryLocation << 8;
-                memoryLocation = memoryLocation | location[i];
-
-            }
-
+            int memoryLocation = Maths.ByteArrToInt(location);
             return data[memoryLocation];
 
         }
 
         public override void RecieveData(byte data)
         {
-            for (byte b = 0; b < size + 1; b++)
+            if (iteration == size - 1)
             {
-                if (b == size)  
-                {
-                    int memoryLocation = location[0];
+                int memoryLocation = Maths.ByteArrToInt(location);
+                this.data[memoryLocation] = data;
 
-                    for (int i = 1; i < size; i++)
-                    {
-                        memoryLocation = memoryLocation << 8;
-                        memoryLocation = memoryLocation | location[i];
+                iteration = 0;
 
-                    }
+            }
+            else
+            {
+                location[iteration] = data;
 
-                    this.data[memoryLocation] = data;
-                    waiting = false;
-                    iteration = 0;
+                iteration++;
 
-                }
-                else
-                {
-                    location[iteration] = data;
-
-                    iteration++;
-                    waiting = true;
-
-                }
             }
         }
     }

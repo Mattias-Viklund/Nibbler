@@ -48,7 +48,13 @@
     <Compile Include="Motherboard\Mainboard.cs" />
     <Compile Include="Processor\Bus.cs" />
     <Compile Include="Processor\CPU.cs" />
+    <Compile Include="Processor\CPUFlags.cs" />
+    <Compile Include="Processor\Instructions\CPUInstruction.cs" />
+    <Compile Include="Processor\Instructions\NOP.cs" />
     <Compile Include="Processor\Memory.cs" />
+    <Compile Include="Processor\Registers\CPURegister.cs" />
+    <Compile Include="Processor\Registers\_8BitRegister.cs" />
+    <Compile Include="Processor\Registers\_16BitRegister.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Util\Maths.cs" />

@@ -27,16 +27,15 @@ namespace Nibbler.Motherboard
         public void Cycle()
         {
             cpu.Think(this);
-            Thread.Sleep(50);
 
-            //foreach (Component c in components)
-            //{
-            //    if (bus.Read(c.GetComponentID()))
-            //    {
-            //        c.RecieveData(bus.Read());
+            foreach (Component c in components)
+            {
+                if (bus.Read(c.GetComponentID()))
+                {
+                    c.RecieveData(bus.Read());
 
-            //    }
-            //}
+                }
+            }
         }
 
         public Memory GetRAM()
