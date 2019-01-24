@@ -45,10 +45,55 @@ namespace Nibbler.Util
 
         public static void SetArrayFromBack(ref byte[] array, byte[] array2)
         {
-            int difference = array2.Length - array.Length;
+            int offset = array2.Length - array.Length;
 
-            if (difference == 0)
+            // if the array2 length is 0
+            //if (offset == -array2.Length)
+            //    return;
+
+            if (offset == 0)
                 array = array2;
+
+            if (offset > 0)
+            {
+                for (int i = 0; i < array.Length; i++)
+                {
+                    array[i] = array2[offset + i - 1];
+
+                }
+            }
+
+            if (offset < 0)
+            {
+                offset = Math.Abs(offset);
+
+                for (int i = 0; i < array.Length; i++)
+                {
+                    if (i >= offset)
+                    {
+                        array[i] = array2[i - offset];
+                    }
+                    else
+                    {
+                        array[i] = 0;
+
+                    }
+                }
+            }
+        }
+
+        public static byte[] IntToByteArray(int value, byte bytes)
+        {
+            byte[] array = new byte[bytes];
+
+            for (int i = array.Length-1; i >= 0; i--)
+            {
+                array[i] = (byte)value;
+                value = value >> 8;
+
+            }
+
+            return array;
 
         }
 

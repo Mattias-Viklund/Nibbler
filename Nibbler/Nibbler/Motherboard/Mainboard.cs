@@ -44,6 +44,12 @@ namespace Nibbler.Motherboard
 
         }
 
+        public CPU GetCPU()
+        {
+            return cpu;
+
+        }
+
         public void SendBus(byte recipient, byte data)
         {
             bus.Write(recipient, data);

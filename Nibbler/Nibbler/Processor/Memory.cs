@@ -25,6 +25,28 @@ namespace Nibbler.Processor
 
         }
 
+        /// <summary>
+        /// DEVTEST
+        /// </summary>
+        public void FillData()
+        {
+            location = Maths.IntToByteArray(0x00, size);
+            SetValue(0x00);
+
+            location = Maths.IntToByteArray(0x01, size);
+            SetValue(0x01);
+
+            location = Maths.IntToByteArray(0x02, size);
+            SetValue(0x00);
+
+            location = Maths.IntToByteArray(0x03, size);
+            SetValue(0x0F);
+
+            location = Maths.IntToByteArray(0x04, size);
+            SetValue(0x00);
+
+        }
+
         public byte ReadData(byte[] location)
         {
             int memoryLocation = Maths.ByteArrToInt(location);
@@ -32,20 +54,25 @@ namespace Nibbler.Processor
 
         }
 
-        public override void RecieveData(byte data)
+        public void SetValue(byte value)
+        {
+            int memoryLocation = Maths.ByteArrToInt(location);
+            this.data[memoryLocation] = value;
+
+        }
+
+        public override void RecieveData(byte value)
         {
             if (iteration == size - 1)
             {
-                int memoryLocation = Maths.ByteArrToInt(location);
-                this.data[memoryLocation] = data;
+                SetValue(value);
 
                 iteration = 0;
 
             }
             else
             {
-                location[iteration] = data;
-
+                location[iteration] = value;
                 iteration++;
 
             }

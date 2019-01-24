@@ -15,14 +15,16 @@ namespace Nibbler
 {
     class Program
     {
-        static Mainboard motherboard = new Mainboard(new CPU(0x02));
+        static Mainboard mainboard = new Mainboard(new CPU(0x02));
         static bool running = true;
 
         static void Main(string[] args)
         {
+            mainboard.GetRAM().FillData();
+
             while (running)
             {
-                motherboard.Cycle();
+                mainboard.Cycle();
 
             }
 
