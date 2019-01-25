@@ -51,6 +51,7 @@
     <Compile Include="Processor\CPUFlags.cs" />
     <Compile Include="Processor\Instructions\ADD.cs" />
     <Compile Include="Processor\Instructions\CPUInstruction.cs" />
+    <Compile Include="Processor\Instructions\INT.cs" />
     <Compile Include="Processor\Instructions\NOP.cs" />
     <Compile Include="Processor\Memory.cs" />
     <Compile Include="Processor\Registers\CPURegister.cs" />

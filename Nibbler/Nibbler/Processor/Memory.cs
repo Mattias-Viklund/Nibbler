@@ -31,19 +31,30 @@ namespace Nibbler.Processor
         public void FillData()
         {
             location = Maths.IntToByteArray(0x00, size);
-            SetValue(0x00);
+            SetValue(0x01); // ADD
 
             location = Maths.IntToByteArray(0x01, size);
-            SetValue(0x01);
+            SetValue(0x00); // REG(0x00)
 
             location = Maths.IntToByteArray(0x02, size);
-            SetValue(0x00);
+            SetValue(0x0F); // , 0x0F
+
 
             location = Maths.IntToByteArray(0x03, size);
-            SetValue(0x0F);
+            SetValue(0x0F); // INT
 
             location = Maths.IntToByteArray(0x04, size);
-            SetValue(0x00);
+            SetValue(0x0A); // PRINT
+
+            location = Maths.IntToByteArray(0x05, size);
+            SetValue(0x00); // REG(0x00)
+
+
+            location = Maths.IntToByteArray(0x06, size);
+            SetValue(0x0F); // INT
+
+            location = Maths.IntToByteArray(0x07, size);
+            SetValue(0xFF); // HALT
 
         }
 

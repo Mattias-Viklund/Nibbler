@@ -18,8 +18,8 @@ namespace Nibbler.Processor
         private bool waiting;
         private byte instruction;
 
-        private CPURegister[] registers = new CPURegister[0x11];
-        private CPUInstruction[] instructions = new CPUInstruction[0x10];
+        private CPURegister[] registers = new CPURegister[0x11]; // (16) 8 bit registers, (1) 16 bit register
+        private CPUInstruction[] instructions = new CPUInstruction[0x10]; // 0x0F + 1 instructions
 
         public CPU(byte memoryWidth)
             : base(true, 0x00)
@@ -43,9 +43,10 @@ namespace Nibbler.Processor
         }
 
 
-        public void FetchInstruction(Memory memory)
+        public byte FetchInstruction(Memory memory)
         {
             instruction = memory.ReadData(programCounter);
+            return instruction;
 
         }
 
@@ -99,12 +100,19 @@ namespace Nibbler.Processor
             Maths.IncrementArray(ref programCounter, memoryWidth);
 
         }
-        public void SetRegister(byte register, byte value)
+
+        public CPURegister GetRegister(byte register)
         {
             if (register >= registers.Length)
-                return;
+                return null;
 
-            registers[register].SetValue(value);
+            return registers[register];
+
+        }
+
+        public void SetRegister(byte register, byte value)
+        {
+            GetRegister(register).SetValue(value);
 
         }
 
@@ -147,7 +155,7 @@ namespace Nibbler.Processor
             instructions[0x0C] = new NOP();
             instructions[0x0D] = new NOP();
             instructions[0x0E] = new NOP();
-            instructions[0x0F] = new NOP();
+            instructions[0x0F] = new INT();
 
         }
 

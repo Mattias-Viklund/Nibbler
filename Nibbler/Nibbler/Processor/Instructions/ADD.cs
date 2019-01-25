@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Nibbler.Motherboard;
+using Nibbler.Processor.Registers;
 
 namespace Nibbler.Processor.Instructions
 {
@@ -16,14 +17,16 @@ namespace Nibbler.Processor.Instructions
         public override void Execute(Mainboard mainboard)
         {
             mainboard.GetCPU().IncrementPC();
-            byte dst = mainboard.GetCPU().GetInstruction();
+            mainboard.GetCPU().FetchInstruction(mainboard.GetRAM());
+            CPURegister dst = mainboard.GetCPU().GetRegister(mainboard.GetCPU().GetInstruction());
 
             mainboard.GetCPU().IncrementPC();
+            mainboard.GetCPU().FetchInstruction(mainboard.GetRAM());
             byte src = mainboard.GetCPU().GetInstruction();
 
-            byte result = (byte)(dst + src);
+            byte result = (byte)(dst.GetByteValue() + src);
 
-            mainboard.GetCPU().SetRegister(dst, result);
+            mainboard.GetCPU().SetRegister(dst.GetRegisterID(), result);
 
         }
     }

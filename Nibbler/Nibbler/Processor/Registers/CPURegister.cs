@@ -25,6 +25,18 @@ namespace Nibbler.Processor.Registers
 
         }
 
+        public byte[] GetValue()
+        {
+            return value;
+
+        }
+
+        public byte GetByteValue()
+        {
+            return value[value.Length - 1];
+
+        }
+
         public void SetValue(byte value)
         {
             this.value[this.value.Length - 1] = value;
