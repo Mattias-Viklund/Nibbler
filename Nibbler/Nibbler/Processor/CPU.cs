@@ -141,8 +141,8 @@ namespace Nibbler.Processor
         private void SetupInstructions()
         {
             instructions[0x00] = new NOP();
-            instructions[0x01] = new ADD();
-            instructions[0x02] = new NOP();
+            instructions[0x01] = new MOV();
+            instructions[0x02] = new ADD();
             instructions[0x03] = new NOP();
             instructions[0x04] = new NOP();
             instructions[0x05] = new NOP();

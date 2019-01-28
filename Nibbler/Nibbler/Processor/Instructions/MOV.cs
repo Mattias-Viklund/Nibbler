@@ -7,19 +7,15 @@ using Nibbler.Motherboard;
 
 namespace Nibbler.Processor.Instructions
 {
-    class NOP : CPUInstruction
+    class MOV : CPUInstruction
     {
-        public NOP() 
-            : base(0x00)
-        {
-
-
-        }
+        public MOV()
+            : base(0x01)
+        { }
 
         public override void Execute(Mainboard mainboard)
         {
-            byte pc = mainboard.GetCPU().GetInstruction();
-            Console.Write(pc+":NOP\n");
+
 
         }
     }

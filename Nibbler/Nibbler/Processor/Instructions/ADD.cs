@@ -11,7 +11,7 @@ namespace Nibbler.Processor.Instructions
     class ADD : CPUInstruction
     {
         public ADD() 
-            : base(0x01)
+            : base(0x02)
         { }
 
         public override void Execute(Mainboard mainboard)
