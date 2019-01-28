@@ -65,7 +65,7 @@ namespace Nibbler.Processor
                 case 0x08: instructions[0x08].Execute(mainboard); break; // JLZ
                 case 0x09: instructions[0x09].Execute(mainboard); break; // LD
                 case 0x0A: instructions[0x0A].Execute(mainboard); break; // STR
-                case 0x0B: instructions[0x0B].Execute(mainboard); break; // NOP
+                case 0x0B: instructions[0x0B].Execute(mainboard); break; // MOV
                 case 0x0C: instructions[0x0C].Execute(mainboard); break; // NOP
                 case 0x0D: instructions[0x0D].Execute(mainboard); break; // NOP
                 case 0x0E: instructions[0x0E].Execute(mainboard); break; // NOP
