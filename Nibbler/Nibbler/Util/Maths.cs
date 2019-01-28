@@ -86,7 +86,7 @@ namespace Nibbler.Util
         {
             byte[] array = new byte[bytes];
 
-            for (int i = array.Length-1; i >= 0; i--)
+            for (int i = array.Length - 1; i >= 0; i--)
             {
                 array[i] = (byte)value;
                 value = value >> 8;
@@ -97,16 +97,16 @@ namespace Nibbler.Util
 
         }
 
-        public static void IncrementArray(ref byte[] array, int arraySize)
+        public static void AddArray(ref byte[] array, int arraySize, byte add)
         {
             bool carry = false;
 
             byte b = array[arraySize - 1];
-            b++;
+            b += add;
 
             array[arraySize - 1] = b;
 
-            if (b == 0x00)
+            if (b < add)
                 carry = true;
 
             if (carry)

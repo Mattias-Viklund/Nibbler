@@ -17,6 +17,7 @@ namespace Nibbler.Processor
 
         private bool waiting;
         private byte instruction;
+        private byte lastInstruction;
 
         private CPURegister[] registers = new CPURegister[0x11]; // (16) 8 bit registers, (1) 16 bit register
         private CPUInstruction[] instructions = new CPUInstruction[0x10]; // 0x0F + 1 instructions
@@ -33,8 +34,6 @@ namespace Nibbler.Processor
 
         public void Think(Mainboard mainboard)
         {
-            Console.WriteLine("Program Counter: " + GetPC());
-
             FetchInstruction(mainboard.GetRAM());
             ExecuteInstruction(mainboard);
 
@@ -45,6 +44,7 @@ namespace Nibbler.Processor
 
         public byte FetchInstruction(Memory memory)
         {
+            lastInstruction = instruction;
             instruction = memory.ReadData(programCounter);
             return instruction;
 
@@ -55,17 +55,17 @@ namespace Nibbler.Processor
             switch (instruction)
             {
                 case 0x00: instructions[0x00].Execute(mainboard); break; // NOP
-                case 0x01: instructions[0x01].Execute(mainboard); break; // ADD
-                case 0x02: instructions[0x02].Execute(mainboard); break; // SUB
-                case 0x03: instructions[0x03].Execute(mainboard); break; // MUL
-                case 0x04: instructions[0x04].Execute(mainboard); break; // DIV
-                case 0x05: instructions[0x05].Execute(mainboard); break; // JMP
-                case 0x06: instructions[0x06].Execute(mainboard); break; // JEZ
-                case 0x07: instructions[0x07].Execute(mainboard); break; // JGZ
-                case 0x08: instructions[0x08].Execute(mainboard); break; // JLZ
-                case 0x09: instructions[0x09].Execute(mainboard); break; // LD
-                case 0x0A: instructions[0x0A].Execute(mainboard); break; // STR
-                case 0x0B: instructions[0x0B].Execute(mainboard); break; // MOV
+                case 0x01: instructions[0x01].Execute(mainboard); break; // MOV
+                case 0x02: instructions[0x02].Execute(mainboard); break; // ADD
+                case 0x03: instructions[0x03].Execute(mainboard); break; // SUB
+                case 0x04: instructions[0x04].Execute(mainboard); break; // MUL
+                case 0x05: instructions[0x05].Execute(mainboard); break; // DIV
+                case 0x06: instructions[0x06].Execute(mainboard); break; // JMP
+                case 0x07: instructions[0x07].Execute(mainboard); break; // JEZ
+                case 0x08: instructions[0x08].Execute(mainboard); break; // JGZ
+                case 0x09: instructions[0x09].Execute(mainboard); break; // JLZ
+                case 0x0A: instructions[0x0A].Execute(mainboard); break; // LD
+                case 0x0B: instructions[0x0B].Execute(mainboard); break; // STR
                 case 0x0C: instructions[0x0C].Execute(mainboard); break; // NOP
                 case 0x0D: instructions[0x0D].Execute(mainboard); break; // NOP
                 case 0x0E: instructions[0x0E].Execute(mainboard); break; // NOP
@@ -97,7 +97,7 @@ namespace Nibbler.Processor
 
         public void IncrementPC()
         {
-            Maths.IncrementArray(ref programCounter, memoryWidth);
+            Maths.AddArray(ref programCounter, memoryWidth, 1);
 
         }
 
@@ -110,9 +110,24 @@ namespace Nibbler.Processor
 
         }
 
+        public void SetRegister(byte register, byte[] value)
+        {
+            GetRegister(register).SetValue(value);
+
+        }
+
         public void SetRegister(byte register, byte value)
         {
             GetRegister(register).SetValue(value);
+
+        }
+
+        public bool IsSameInstruction()
+        {
+            if (lastInstruction == instruction)
+                return true;
+
+            return false;
 
         }
 

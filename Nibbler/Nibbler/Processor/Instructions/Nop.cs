@@ -9,7 +9,7 @@ namespace Nibbler.Processor.Instructions
 {
     class NOP : CPUInstruction
     {
-        public NOP() 
+        public NOP()
             : base(0x00)
         {
 
@@ -18,8 +18,8 @@ namespace Nibbler.Processor.Instructions
 
         public override void Execute(Mainboard mainboard)
         {
-            byte pc = mainboard.GetCPU().GetInstruction();
-            Console.Write(pc+":NOP\n");
+            if (!mainboard.GetCPU().IsSameInstruction())
+                Console.Write("NOP\n");
 
         }
     }

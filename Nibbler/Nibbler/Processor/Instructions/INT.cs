@@ -16,6 +16,18 @@ namespace Nibbler.Processor.Instructions
 
         }
 
+        public enum Interrupts
+        {
+            HALT = 0xFF,
+            PRINT_VALUE = 0x0A,
+            DISPLAY = 0x80
+
+        }
+
+        // -= Interrupt =-
+        // INT CODE [Register]
+        // Gets next memory address for CODE
+        // If interrupt requires, gets memory address for Register
         public override void Execute(Mainboard mainboard)
         {
             mainboard.GetCPU().IncrementPC();
@@ -24,7 +36,7 @@ namespace Nibbler.Processor.Instructions
 
             switch (interrupt)
             {
-                case 0xFF: Console.ReadLine(); break; // HALT 
+                case 0xFF: Console.ReadKey(); break; // HALT 
 
                 case 0x0A:
                     mainboard.GetCPU().IncrementPC();

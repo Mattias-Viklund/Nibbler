@@ -31,7 +31,7 @@ namespace Nibbler.Processor
         public void FillData()
         {
             location = Maths.IntToByteArray(0x00, size);
-            SetValue(0x02); // ADD
+            SetValue(0x01); // MOV
 
             location = Maths.IntToByteArray(0x01, size);
             SetValue(0x00); // REG(0x00)
@@ -41,13 +41,23 @@ namespace Nibbler.Processor
 
 
             location = Maths.IntToByteArray(0x03, size);
-            SetValue(0x0F); // INT
+            SetValue(0x02); // ADD
 
             location = Maths.IntToByteArray(0x04, size);
-            SetValue(0x0A); // PRINT
+            SetValue(0x10); // REG(0x10)
 
             location = Maths.IntToByteArray(0x05, size);
-            SetValue(0x00); // REG(0x00)
+            SetValue(0x0F); // REG(0x00)
+
+
+            location = Maths.IntToByteArray(0x06, size);
+            SetValue(0x0F); // INT
+
+            location = Maths.IntToByteArray(0x07, size);
+            SetValue(0x0A); // PRINT
+
+            location = Maths.IntToByteArray(0x08, size);
+            SetValue(0x10); // REG(0x00)
 
 
             location = Maths.IntToByteArray(0x06, size);
@@ -55,6 +65,7 @@ namespace Nibbler.Processor
 
             location = Maths.IntToByteArray(0x07, size);
             SetValue(0xFF); // HALT
+
 
             location = Maths.IntToByteArray(0xFE, size);
             SetValue(0x0F); // INT
