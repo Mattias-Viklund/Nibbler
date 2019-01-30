@@ -7,7 +7,7 @@ using Nibbler.Motherboard;
 
 namespace Nibbler.Processor.Instructions
 {
-    class INT : CPUInstruction
+    public class INT : CPUInstruction
     {
         public INT()
             : base(0x0F)
@@ -42,7 +42,7 @@ namespace Nibbler.Processor.Instructions
                     mainboard.GetCPU().IncrementPC();
                     mainboard.GetCPU().FetchInstruction(mainboard.GetRAM());
                     byte register = mainboard.GetCPU().GetInstruction();              
-                    Console.WriteLine(mainboard.GetCPU().GetRegister(register).GetByteValue()); break; // Print register value
+                    Console.WriteLine(mainboard.GetCPU().GetRegister(register).GetIntValue()); break; // Print register value
 
                 case 0x80: break;
 

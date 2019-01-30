@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Nibbler.Motherboard
 {
-    abstract class Component
+    public abstract class Component
     {
         private bool onBus;
         private byte component;

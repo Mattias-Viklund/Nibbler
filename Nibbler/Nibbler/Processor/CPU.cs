@@ -10,7 +10,7 @@ using Nibbler.Util;
 
 namespace Nibbler.Processor
 {
-    class CPU : Component
+    public class CPU : Component
     {
         private byte[] programCounter;
         private byte memoryWidth;
@@ -19,7 +19,7 @@ namespace Nibbler.Processor
         private byte instruction;
         private byte lastInstruction;
 
-        private CPURegister[] registers = new CPURegister[0x11]; // (16) 8 bit registers, (1) 16 bit register
+        private CPURegister[] registers = new CPURegister[0x12]; // (16) 8 bit registers, (1) 16 bit register
         private CPUInstruction[] instructions = new CPUInstruction[0x10]; // 0x0F + 1 instructions
 
         public CPU(byte memoryWidth)
@@ -151,6 +151,7 @@ namespace Nibbler.Processor
             registers[0x0F] = new _8BitRegister(0x0F);
 
             registers[0x10] = new _16BitRegister(0x10);
+            registers[0x11] = new _32BitRegister(0x11);
 
         }
         private void SetupInstructions()

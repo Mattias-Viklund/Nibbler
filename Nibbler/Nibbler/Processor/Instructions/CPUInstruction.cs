@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Nibbler.Processor.Instructions
 {
-    abstract class CPUInstruction
+    public abstract class CPUInstruction
     {
         private byte opcode;
 

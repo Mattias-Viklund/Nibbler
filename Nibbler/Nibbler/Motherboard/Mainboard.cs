@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Nibbler.Motherboard
 {
-    class Mainboard
+    public class Mainboard
     {
         public static List<Component> components = new List<Component>();
 

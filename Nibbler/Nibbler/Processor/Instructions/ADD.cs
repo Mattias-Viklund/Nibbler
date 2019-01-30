@@ -9,7 +9,7 @@ using Nibbler.Util;
 
 namespace Nibbler.Processor.Instructions
 {
-    class ADD : CPUInstruction
+    public class ADD : CPUInstruction
     {
         public ADD() 
             : base(0x02)
@@ -30,9 +30,11 @@ namespace Nibbler.Processor.Instructions
             mainboard.GetCPU().FetchInstruction(mainboard.GetRAM());
             CPURegister src = mainboard.GetCPU().GetRegister(mainboard.GetCPU().GetInstruction());
 
-            dst.GetValue();
+            byte[] dstValue = dst.GetValue();
 
-            mainboard.GetCPU().SetRegister(dst.GetRegisterID(), src.GetValue());
+            Maths.AddArray(ref dstValue, dstValue.Length, src.GetValue()[0]);
+
+            mainboard.GetCPU().SetRegister(dst.GetRegisterID(), dstValue);
 
         }
     }

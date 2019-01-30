@@ -31,7 +31,7 @@ namespace Assembler
             FileStream fs = new FileStream(path, FileMode.Open);
 
             int hexIn;
-            String hex;
+            string hex;
 
             for (int i = 0; (hexIn = fs.ReadByte()) != -1; i++)
             {

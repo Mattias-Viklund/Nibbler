@@ -6,10 +6,10 @@ using System.Threading.Tasks;
 
 namespace Nibbler.Processor.Registers
 {
-    public class _16BitRegister : CPURegister
+    class _32BitRegister : CPURegister
     {
-        public _16BitRegister(byte register)
-            : base(register, 0x02)
+        public _32BitRegister(byte register)
+            : base(register, 0x04)
         { }
     }
 }

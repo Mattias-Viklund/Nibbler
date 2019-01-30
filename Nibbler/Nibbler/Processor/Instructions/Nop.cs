@@ -18,8 +18,8 @@ namespace Nibbler.Processor.Instructions
 
         public override void Execute(Mainboard mainboard)
         {
-            if (!mainboard.GetCPU().IsSameInstruction())
-                Console.Write("NOP\n");
+            //    if (!mainboard.GetCPU().IsSameInstruction())
+            //        Console.Write("NOP\n");
 
         }
     }

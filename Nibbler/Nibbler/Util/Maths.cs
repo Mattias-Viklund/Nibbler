@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Nibbler.Util
 {
-    static class Maths
+    public static class Maths
     {
         public static byte Pow(byte data, byte exponent)
         {
@@ -119,13 +119,15 @@ namespace Nibbler.Util
                     b++;
 
                     // Do we need to carry again?
-                    if (b != 0x00)
+                    if (b == 0x00)
+                        carry = true;
+                    else
                         carry = false;
 
                     // If we also need to carry the last byte in array, reset it all
                     if (i == 0 && carry)
                     {
-                        for (int j = 0; j < arraySize; j++)
+                        for (int j = 0; j < arraySize-1; j++)
                         {
                             array[j] = 0;
 
@@ -139,7 +141,6 @@ namespace Nibbler.Util
 
                 }
             }
-
         }
     }
 }

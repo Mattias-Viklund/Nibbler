@@ -8,7 +8,7 @@ using Nibbler.Processor.Registers;
 
 namespace Nibbler.Processor.Instructions
 {
-    class MOV : CPUInstruction
+    public class MOV : CPUInstruction
     {
         public MOV()
             : base(0x01)
@@ -27,9 +27,9 @@ namespace Nibbler.Processor.Instructions
 
             mainboard.GetCPU().IncrementPC();
             mainboard.GetCPU().FetchInstruction(mainboard.GetRAM());
-            byte src = mainboard.GetCPU().GetInstruction();
+            byte value = mainboard.GetCPU().GetInstruction();
 
-            mainboard.GetCPU().SetRegister(dst.GetRegisterID(), src);
+            mainboard.GetCPU().SetRegister(dst.GetRegisterID(), value);
 
         }
     }
