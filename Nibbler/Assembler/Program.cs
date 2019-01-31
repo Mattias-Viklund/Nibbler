@@ -4,6 +4,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.IO;
+using Nibbler;
+using Nibbler.Core;
+using Nibbler.Motherboard;
+using Nibbler.Processor;
+using Nibbler.Util;
+using Assembler.Util;
 
 namespace Assembler
 {
@@ -11,18 +17,10 @@ namespace Assembler
     {
         static void Main(string[] args)
         {
-            if (args.Length == 0)
-                return;
-
-            string path = args[0];
-
-            if (File.Exists(path))
-            {
-
-
-            }
-            else
-                return;
+            string numba = "0xFFFF";
+            int numba2 = Utils.FromHex(numba);
+            Console.WriteLine(numba2);
+            Console.ReadLine();
 
         }
 
