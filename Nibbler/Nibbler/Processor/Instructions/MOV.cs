@@ -8,11 +8,11 @@ using Nibbler.Processor.Registers;
 
 namespace Nibbler.Processor.Instructions
 {
-    class ADD : CPUInstruction
+    class MOV : CPUInstruction
     {
-        public ADD() 
-            : base(0x02)
-        { }
+        public MOV() : base(0x01)
+        {
+        }
 
         public override void Execute(Mainboard mainboard)
         {

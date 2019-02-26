@@ -31,7 +31,7 @@ namespace Nibbler.Processor
         public void FillData()
         {
             location = Maths.IntToByteArray(0x00, size);
-            SetValue(0x01); // ADD
+            SetValue(0x02); // ADD
 
             location = Maths.IntToByteArray(0x01, size);
             SetValue(0x00); // REG(0x00)
