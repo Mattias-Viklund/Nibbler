@@ -8,12 +8,17 @@ using Nibbler.Processor.Registers;
 
 namespace Nibbler.Processor.Instructions
 {
-    class MOV : CPUInstruction
+    public class MOV : CPUInstruction
     {
-        public MOV() : base(0x01)
-        {
-        }
+        public MOV()
+            : base(0x01)
+        { }
 
+
+        // -= Move =-
+        // MOV DST VALUE
+        // Gets next memory address for DST
+        // Moves value in next memory address to DST
         public override void Execute(Mainboard mainboard)
         {
             mainboard.GetCPU().IncrementPC();

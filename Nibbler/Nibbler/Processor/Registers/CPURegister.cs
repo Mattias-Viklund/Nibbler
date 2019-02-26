@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Nibbler.Processor.Registers
 {
-    abstract class CPURegister
+    public abstract class CPURegister
     {
         private byte register;
         private byte[] value;
@@ -28,6 +28,12 @@ namespace Nibbler.Processor.Registers
         public byte[] GetValue()
         {
             return value;
+
+        }
+
+        public int GetIntValue()
+        {
+            return Maths.ByteArrToInt(value);
 
         }
 

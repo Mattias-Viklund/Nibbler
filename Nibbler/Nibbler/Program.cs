@@ -6,7 +6,6 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Threading;
 
-using Nibbler.Core;
 using Nibbler.Util;
 using Nibbler.Motherboard;
 using Nibbler.Processor;

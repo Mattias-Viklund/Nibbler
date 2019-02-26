@@ -9,10 +9,10 @@ namespace Nibbler.Core
 {
     /// <summary>
     /// Half a byte (4 bit nibble).
-    /// Max value: 15, 0xF
+    /// Max value: 15, 0xF, single nibble
     /// Usage: CPU
     /// </summary>
-    class Nibble
+    public static class Nibble
     {
         public static byte AddNibble(byte left, byte right)
         {

@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Nibbler.Processor
 {
-    class Bus
+    public class Bus
     {
         private byte reciever = 0x00;
         private byte busData = 0x00;

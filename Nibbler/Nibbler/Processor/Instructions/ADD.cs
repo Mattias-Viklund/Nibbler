@@ -5,15 +5,21 @@ using System.Text;
 using System.Threading.Tasks;
 using Nibbler.Motherboard;
 using Nibbler.Processor.Registers;
+using Nibbler.Util;
 
 namespace Nibbler.Processor.Instructions
 {
-    class ADD : CPUInstruction
+    public class ADD : CPUInstruction
     {
         public ADD() 
             : base(0x02)
         { }
 
+        // -= Addition =-
+        // ADD DST SRC
+        // Gets next memory address for DST
+        // Gets next memory address for SRC
+        // Adds SRC to DST
         public override void Execute(Mainboard mainboard)
         {
             mainboard.GetCPU().IncrementPC();
@@ -22,11 +28,13 @@ namespace Nibbler.Processor.Instructions
 
             mainboard.GetCPU().IncrementPC();
             mainboard.GetCPU().FetchInstruction(mainboard.GetRAM());
-            byte src = mainboard.GetCPU().GetInstruction();
+            CPURegister src = mainboard.GetCPU().GetRegister(mainboard.GetCPU().GetInstruction());
 
-            byte result = (byte)(dst.GetByteValue() + src);
+            byte[] dstValue = dst.GetValue();
 
-            mainboard.GetCPU().SetRegister(dst.GetRegisterID(), result);
+            Maths.AddArray(ref dstValue, dstValue.Length, src.GetValue()[0]);
+
+            mainboard.GetCPU().SetRegister(dst.GetRegisterID(), dstValue);
 
         }
     }

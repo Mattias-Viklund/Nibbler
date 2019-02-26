@@ -4,13 +4,14 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{E924EDB8-1C39-4589-AAD6-4A8F6E8ACEBD}</ProjectGuid>
+    <ProjectGuid>{E3D0D69B-4071-4A61-A8D9-9F902A2E1651}</ProjectGuid>
     <OutputType>Exe</OutputType>
-    <RootNamespace>Nibbler</RootNamespace>
-    <AssemblyName>Nibbler</AssemblyName>
-    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <RootNamespace>Assembler</RootNamespace>
+    <AssemblyName>Assembler</AssemblyName>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <Deterministic>true</Deterministic>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -34,7 +35,6 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
-    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -43,27 +43,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Motherboard\Component.cs" />
-    <Compile Include="Motherboard\Mainboard.cs" />
-    <Compile Include="Processor\Bus.cs" />
-    <Compile Include="Processor\CPU.cs" />
-    <Compile Include="Processor\Instructions\ADD.cs" />
-    <Compile Include="Processor\Instructions\CPUInstruction.cs" />
-    <Compile Include="Processor\Instructions\INT.cs" />
-    <Compile Include="Processor\Instructions\MOV.cs" />
-    <Compile Include="Processor\Instructions\NOP.cs" />
-    <Compile Include="Processor\Memory.cs" />
-    <Compile Include="Processor\Registers\CPURegister.cs" />
-    <Compile Include="Processor\Registers\_32BitRegister.cs" />
-    <Compile Include="Processor\Registers\_8BitRegister.cs" />
-    <Compile Include="Processor\Registers\_16BitRegister.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Util\Maths.cs" />
-    <Compile Include="Util\Nibble.cs" />
+    <Compile Include="Util\Utils.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Nibbler\Nibbler.csproj">
+      <Project>{e924edb8-1c39-4589-aad6-4a8f6e8acebd}</Project>
+      <Name>Nibbler</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

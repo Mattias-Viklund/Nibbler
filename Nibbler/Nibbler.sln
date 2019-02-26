@@ -1,9 +1,11 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2013
-VisualStudioVersion = 12.0.40629.0
+# Visual Studio 15
+VisualStudioVersion = 15.0.28307.168
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Nibbler", "Nibbler\Nibbler.csproj", "{E924EDB8-1C39-4589-AAD6-4A8F6E8ACEBD}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Assembler", "Assembler\Assembler.csproj", "{E3D0D69B-4071-4A61-A8D9-9F902A2E1651}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,10 +17,10 @@ Global
 		{E924EDB8-1C39-4589-AAD6-4A8F6E8ACEBD}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E924EDB8-1C39-4589-AAD6-4A8F6E8ACEBD}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E924EDB8-1C39-4589-AAD6-4A8F6E8ACEBD}.Release|Any CPU.Build.0 = Release|Any CPU
-		{369310D3-B5E0-48F4-A243-EC5C749B2C4E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{369310D3-B5E0-48F4-A243-EC5C749B2C4E}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{369310D3-B5E0-48F4-A243-EC5C749B2C4E}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{369310D3-B5E0-48F4-A243-EC5C749B2C4E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E3D0D69B-4071-4A61-A8D9-9F902A2E1651}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E3D0D69B-4071-4A61-A8D9-9F902A2E1651}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E3D0D69B-4071-4A61-A8D9-9F902A2E1651}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E3D0D69B-4071-4A61-A8D9-9F902A2E1651}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

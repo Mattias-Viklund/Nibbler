@@ -8,7 +8,7 @@ using Nibbler.Util;
 
 namespace Nibbler.Processor
 {
-    class Memory : Component
+    public class Memory : Component
     {
         private byte size;
 
@@ -37,14 +37,14 @@ namespace Nibbler.Processor
             SetValue(0x00); // REG(0x00)
 
             location = Maths.IntToByteArray(0x02, size);
-            SetValue(0x0F); // , 0x0F
+            SetValue(0xFF); // , 0x0F
 
 
             location = Maths.IntToByteArray(0x03, size);
-            SetValue(0x0F); // INT
+            SetValue(0x02); // ADD
 
             location = Maths.IntToByteArray(0x04, size);
-            SetValue(0x0A); // PRINT
+            SetValue(0x10); // REG(0x10)
 
             location = Maths.IntToByteArray(0x05, size);
             SetValue(0x00); // REG(0x00)
@@ -54,6 +54,16 @@ namespace Nibbler.Processor
             SetValue(0x0F); // INT
 
             location = Maths.IntToByteArray(0x07, size);
+            SetValue(0x0A); // PRINT
+
+            location = Maths.IntToByteArray(0x08, size);
+            SetValue(0x10); // REG(0x10)
+
+
+            location = Maths.IntToByteArray(0x09, size);
+            SetValue(0x0F); // INT
+
+            location = Maths.IntToByteArray(0x0A, size);
             SetValue(0xFF); // HALT
 
         }

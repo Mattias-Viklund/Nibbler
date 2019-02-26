@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Nibbler.Util
 {
-    static class Maths
+    public static class Maths
     {
         public static byte Pow(byte data, byte exponent)
         {
@@ -86,7 +86,7 @@ namespace Nibbler.Util
         {
             byte[] array = new byte[bytes];
 
-            for (int i = array.Length-1; i >= 0; i--)
+            for (int i = array.Length - 1; i >= 0; i--)
             {
                 array[i] = (byte)value;
                 value = value >> 8;
@@ -97,16 +97,16 @@ namespace Nibbler.Util
 
         }
 
-        public static void IncrementArray(ref byte[] array, int arraySize)
+        public static void AddArray(ref byte[] array, int arraySize, byte add)
         {
             bool carry = false;
 
             byte b = array[arraySize - 1];
-            b++;
+            b += add;
 
             array[arraySize - 1] = b;
 
-            if (b == 0x00)
+            if (b < add)
                 carry = true;
 
             if (carry)
@@ -119,13 +119,15 @@ namespace Nibbler.Util
                     b++;
 
                     // Do we need to carry again?
-                    if (b != 0x00)
+                    if (b == 0x00)
+                        carry = true;
+                    else
                         carry = false;
 
                     // If we also need to carry the last byte in array, reset it all
                     if (i == 0 && carry)
                     {
-                        for (int j = 0; j < arraySize; j++)
+                        for (int j = 0; j < arraySize-1; j++)
                         {
                             array[j] = 0;
 
@@ -139,7 +141,6 @@ namespace Nibbler.Util
 
                 }
             }
-
         }
     }
 }
