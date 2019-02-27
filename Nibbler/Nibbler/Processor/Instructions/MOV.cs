@@ -27,9 +27,11 @@ namespace Nibbler.Processor.Instructions
 
             mainboard.GetCPU().IncrementPC();
             mainboard.GetCPU().FetchInstruction(mainboard.GetRAM());
-            byte value = mainboard.GetCPU().GetInstruction();
+            byte src = mainboard.GetCPU().GetInstruction();
 
-            mainboard.GetCPU().SetRegister(dst.GetRegisterID(), value);
+            byte result = (byte)(dst.GetByteValue() + src);
+
+            mainboard.GetCPU().SetRegister(dst.GetRegisterID(), result);
 
         }
     }
