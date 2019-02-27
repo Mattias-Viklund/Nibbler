@@ -54,6 +54,7 @@
     <ProjectReference Include="..\Nibbler\Nibbler.csproj">
       <Project>{e924edb8-1c39-4589-aad6-4a8f6e8acebd}</Project>
       <Name>Nibbler</Name>
+      <Private>True</Private>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

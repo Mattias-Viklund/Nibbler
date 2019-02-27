@@ -17,25 +17,30 @@ namespace Assembler
     {
         static void Main(string[] args)
         {
-            string numba = "0xFFFF";
-            int numba2 = Utils.FromHex(numba);
-            Console.WriteLine(numba2);
+            int value = Utils.FromHex("0x01020304");
+            ParseFile("debug.masm");
+            Console.WriteLine(Maths.IntToArrString(value));
             Console.ReadLine();
 
         }
 
-        static void ParseFile(string path)
+        static byte[] ParseFile(string path)
         {
             FileStream fs = new FileStream(path, FileMode.Open);
 
-            int hexIn;
-            string hex;
+            byte[] arr = new byte[fs.Length];
 
-            for (int i = 0; (hexIn = fs.ReadByte()) != -1; i++)
+            int byteRead;
+
+            int value;
+            for (int i = 0; (byteRead = fs.ReadByte()) != -1; i++)
             {
-                hex = string.Format("{0:X2}", hexIn);
+                value = Utils.FromHex(string.Format("{0:X2}", byteRead));
+                arr[i] = (byte)value;
 
             }
+
+            return arr;
         }
     }
 }

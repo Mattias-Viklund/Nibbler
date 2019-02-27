@@ -43,6 +43,15 @@ namespace Nibbler.Util
 
         }
 
+        public static bool IsEven(int value)
+        {
+            if ((value & 0x01) != 0x01)
+                return true;
+
+            return false;
+
+        }
+
         public static void SetArrayFromBack(ref byte[] array, byte[] array2)
         {
             int offset = array2.Length - array.Length;
@@ -95,6 +104,21 @@ namespace Nibbler.Util
 
             return array;
 
+        }
+
+        public static string IntToArrString(int value)
+        {
+            byte[] arr = IntToByteArray(value, 4);
+
+            StringBuilder sb = new StringBuilder();
+            foreach (byte b in arr)
+            {
+                sb.Append("["+b.ToString()+"]");
+
+            }
+
+            return sb.ToString();
+            
         }
 
         public static void AddArray(ref byte[] array, int arraySize, byte add)
