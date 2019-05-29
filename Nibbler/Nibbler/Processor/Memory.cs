@@ -37,11 +37,11 @@ namespace Nibbler.Processor
             SetValue(0x00); // REG(0x00)
 
             location = Maths.IntToByteArray(0x02, size);
-            SetValue(0xFF); // , 0x0F
+            SetValue(0x0F); // , 0x0F
 
 
             location = Maths.IntToByteArray(0x03, size);
-            SetValue(0x02); // ADD
+            SetValue(0x0C); // ADDR
 
             location = Maths.IntToByteArray(0x04, size);
             SetValue(0x10); // REG(0x10)

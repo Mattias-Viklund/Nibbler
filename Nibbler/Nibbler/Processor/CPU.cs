@@ -66,7 +66,7 @@ namespace Nibbler.Processor
                 case 0x09: instructions[0x09].Execute(mainboard); break; // JLZ
                 case 0x0A: instructions[0x0A].Execute(mainboard); break; // LD
                 case 0x0B: instructions[0x0B].Execute(mainboard); break; // STR
-                case 0x0C: instructions[0x0C].Execute(mainboard); break; // NOP
+                case 0x0C: instructions[0x0C].Execute(mainboard); break; // ADDR
                 case 0x0D: instructions[0x0D].Execute(mainboard); break; // NOP
                 case 0x0E: instructions[0x0E].Execute(mainboard); break; // NOP
                 case 0x0F: instructions[0x0F].Execute(mainboard); break; // INT
@@ -133,25 +133,25 @@ namespace Nibbler.Processor
 
         private void SetupRegisters()
         {
-            registers[0x00] = new _8BitRegister(0x00);
-            registers[0x01] = new _8BitRegister(0x01);
-            registers[0x02] = new _8BitRegister(0x02);
-            registers[0x03] = new _8BitRegister(0x03);
-            registers[0x04] = new _8BitRegister(0x04);
-            registers[0x05] = new _8BitRegister(0x05);
-            registers[0x06] = new _8BitRegister(0x06);
-            registers[0x07] = new _8BitRegister(0x07);
-            registers[0x08] = new _8BitRegister(0x08);
-            registers[0x09] = new _8BitRegister(0x09);
-            registers[0x0A] = new _8BitRegister(0x0A);
-            registers[0x0B] = new _8BitRegister(0x0B);
-            registers[0x0C] = new _8BitRegister(0x0C);
-            registers[0x0D] = new _8BitRegister(0x0D);
-            registers[0x0E] = new _8BitRegister(0x0E);
-            registers[0x0F] = new _8BitRegister(0x0F);
+            registers[0x00] = new _8BitRegister(0x00); // A
+            registers[0x01] = new _8BitRegister(0x01); // B
+            registers[0x02] = new _8BitRegister(0x02); // C
+            registers[0x03] = new _8BitRegister(0x03); // D
+            registers[0x04] = new _8BitRegister(0x04); // E
+            registers[0x05] = new _8BitRegister(0x05); // F
+            registers[0x06] = new _8BitRegister(0x06); // R1
+            registers[0x07] = new _8BitRegister(0x07); // R2
+            registers[0x08] = new _8BitRegister(0x08); // R3
+            registers[0x09] = new _8BitRegister(0x09); // R4
+            registers[0x0A] = new _8BitRegister(0x0A); // R5
+            registers[0x0B] = new _8BitRegister(0x0B); // AL
+            registers[0x0C] = new _8BitRegister(0x0C); // AX
+            registers[0x0D] = new _8BitRegister(0x0D); // BL
+            registers[0x0E] = new _8BitRegister(0x0E); // BX
+            registers[0x0F] = new _8BitRegister(0x0F); // X
 
-            registers[0x10] = new _16BitRegister(0x10);
-            registers[0x11] = new _32BitRegister(0x11);
+            registers[0x10] = new _16BitRegister(0x10); // REX
+            registers[0x11] = new _32BitRegister(0x11); // REL
 
         }
         private void SetupInstructions()
@@ -168,7 +168,7 @@ namespace Nibbler.Processor
             instructions[0x09] = new NOP();
             instructions[0x0A] = new NOP();
             instructions[0x0B] = new NOP();
-            instructions[0x0C] = new NOP();
+            instructions[0x0C] = new ADDR();
             instructions[0x0D] = new NOP();
             instructions[0x0E] = new NOP();
             instructions[0x0F] = new INT();
